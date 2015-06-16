@@ -1,6 +1,7 @@
 package com.example.golvmopp.teamcreator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class AddPlayers extends ActionBarActivity {
@@ -22,11 +25,14 @@ public class AddPlayers extends ActionBarActivity {
     ArrayList<Player> PlayersArray = new ArrayList<Player>();
     ArrayList<Player> ChosenArray = new ArrayList<Player>();
     String myLogTag = "MyTag";
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_players);
+
+        importArrayList();
         //searchView searchView_players;
         final EditText editText_name = (EditText) this.findViewById(R.id.editText_name);
         final ListView listView_Players = (ListView) this.findViewById(R.id.listView_Players);
@@ -91,9 +97,9 @@ public class AddPlayers extends ActionBarActivity {
             {
                 try
                 {
-                    //Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
-                    //intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
-                    //startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
+                    intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
+                    startActivity(intent);
                 }
                 catch(Exception e)
                 {
@@ -123,5 +129,38 @@ public class AddPlayers extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onDestroy()
+    {
+        ArrayList<String> tempArray = new ArrayList<String>();
+        for(int i = 0; i <= PlayersArray.size(); i++)
+        {
+            tempArray.add(PlayersArray.get(i).getName());
+            tempArray.add(Double.toString(PlayersArray.get(i).getSkill()));
+        }
+
+
+        pref = getSharedPreferences("players", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        try
+        {
+
+        }
+        catch(Exception e)
+        {
+
+        }
+
+        Set<String> set = new HashSet<String>();
+        set.addAll(tempArray);
+        editor.putStringSet("PlayersArray", set);
+        editor.commit();
+    }
+
+    public void importArrayList()
+    {
+        //Set<String> set =
     }
 }
