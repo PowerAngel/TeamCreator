@@ -20,6 +20,14 @@
             android:name=".AddPlayers"
             android:label="@string/title_activity_add_players" >
         </activity>
+        <activity
+            android:name=".CreateTeams"
+            android:label="@string/title_activity_create_teams" >
+        </activity>
+        <activity
+            android:name=".Team"
+            android:label="@string/title_activity_team" >
+        </activity>
     </application>
 
 </manifest>

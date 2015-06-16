@@ -10,7 +10,9 @@
 
 <RelativeLayout
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
 
     <ListView
         android:layout_width="fill_parent"
@@ -28,10 +30,10 @@
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText_name"
-            android:background="#FFFFFF"/>
+            android:background="#FFFFFF"
+            android:hint="Name"/>
 
         <ImageButton
             android:layout_width="100dp"

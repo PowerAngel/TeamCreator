@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_players">AddPlayers</string>
+    <string name="title_activity_create_teams">CreateTeams</string>
+    <string name="title_activity_team">Team</string>
 </resources>

@@ -1,11 +1,12 @@
 package com.example.golvmopp.teamcreator;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 
 public class StartScreen extends ActionBarActivity {
@@ -14,6 +15,8 @@ public class StartScreen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
+        ImageButton btn_Match = (ImageButton) findViewById(R.id.btn_Match);
+        ImageButton btn_Tournament = (ImageButton) findViewById(R.id.btn_Tournament);
     }
 
     @Override
@@ -38,7 +41,7 @@ public class StartScreen extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void AddPlayers(View view)
+    public void AddPlayers(View view)   //OBS ÄNDRAD VILKEN KLASS SOM KÖRS!!!
     {
         Intent intent = new Intent(getApplicationContext(), AddPlayers.class);
         startActivity(intent);
