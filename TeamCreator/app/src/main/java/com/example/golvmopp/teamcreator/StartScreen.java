@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 
 public class StartScreen extends ActionBarActivity {
@@ -14,6 +16,8 @@ public class StartScreen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
+        Button btn_Match = (Button) findViewById(R.id.btn_Match);
+        Button btn_Tournament = (Button) findViewById(R.id.btn_Tournament);
     }
 
     @Override
