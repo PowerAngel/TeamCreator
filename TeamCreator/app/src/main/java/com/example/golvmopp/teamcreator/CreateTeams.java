@@ -1,24 +1,25 @@
 package com.example.golvmopp.teamcreator;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class CreateTeams extends ActionBarActivity {
 
     private ArrayAdapter<String> adapter;
     ArrayList<Player> PlayersArray = new ArrayList<Player>();
+    ArrayList<String> NameArray = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +36,34 @@ public class CreateTeams extends ActionBarActivity {
         PlayersArray.add(player4);
         PlayersArray.add(player5);
         PlayersArray.add(player6);
+        for(int i = 0; i < PlayersArray.size(); i++){
+            String name = PlayersArray.get(i).getName();
+            NameArray.add(i,name);
+        }
+        final ListView listView_Players = (ListView) this.findViewById(R.id.listView_Players);
+        final TextView textView_NumberOfTeams = (TextView) this.findViewById(R.id.textView_Players);
+        final Spinner spn_NumberOfTeams = (Spinner) this.findViewById(R.id.spn_NumberOfTeams);
+        Button btn_MakeTeams = (Button) this.findViewById(R.id.btn_MakeTeams);
 
-        final ListView liteView_Players = (ListView) this.findViewById(R.id.listView_Players);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, NameArray);
+        listView_Players.setAdapter(adapter);
 
+        String[] items = new String[] {"2", "3", "4", "5", "6"};
+        Spinner spinner = (Spinner) this.findViewById(R.id.spn_NumberOfTeams);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        btn_MakeTeams.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String NumberOfTeams = spn_NumberOfTeams.getSelectedItem().toString();
+                Random rand = new Random();
+                int n = rand.nextInt(NameArray.size());
+
+            }
+        });
 
     }
 

@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="@drawable/start_screen">
+
+    <ImageButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match"
+        android:id="@+id/btn_Match"
+        android:src="@drawable/button_simple"
+        android:layout_marginTop="198dp"
+        android:onClick="AddPlayers"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/btn_Tournament"
+        android:layout_alignStart="@+id/btn_Tournament"
+        android:layout_alignRight="@+id/btn_Tournament"
+        android:layout_alignEnd="@+id/btn_Tournament" />
+
+    <ImageButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tournament"
+        android:id="@+id/btn_Tournament"
+        android:src="@drawable/button_tournament"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/btn_Match"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
