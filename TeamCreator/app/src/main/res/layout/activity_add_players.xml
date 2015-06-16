@@ -1,57 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.golvmopp.teamcreator.AddPlayers"
-    android:background="@drawable/select_players">
+    android:background="@drawable/select_players"
+    android:orientation="horizontal">
 
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="175dp"
+        android:id="@+id/listView_Players"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Players:"
-            android:id="@+id/textView_Players"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="80dp" />
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView_Players" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="380dp">
-
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp">
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
             android:inputType="textPersonName"
             android:text="Name"
             android:ems="10"
-            android:id="@+id/editText_name" />
+            android:id="@+id/editText_name"
+            android:background="#FFFFFF"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lägg till"
-            android:id="@+id/btn_AddName"
-            android:longClickable="false" />
-    </LinearLayout>
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imageButton_AddName"
+            android:src="@drawable/button_add"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="false"
+            android:background="#ff0000" />
 
+        <ImageButton
+            android:layout_width="500dp"
+            android:layout_height="150dp"
+            android:id="@+id/imageButton_Done"
+            android:layout_marginTop="380dp"
+            android:background="#ff0000"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/button_done"/>
+
+    </RelativeLayout>
 </RelativeLayout>
+
+</LinearLayout>
