@@ -92,6 +92,11 @@ public class AddPlayers extends ActionBarActivity {
         });
     }
 
+    public void buttonRemove()
+    {
+        
+    }
+
     public void fixListView()
     {
         listView_Players = (ListView) this.findViewById(R.id.listView_Players);
