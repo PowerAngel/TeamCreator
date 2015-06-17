@@ -1,16 +1,20 @@
 package com.example.golvmopp.teamcreator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,7 +24,8 @@ public class CreateTeams extends ActionBarActivity {
     private ArrayAdapter<String> adapter;
     ArrayList<Player> PlayersArray = new ArrayList<Player>();
     ArrayList<String> NameArray = new ArrayList<String>();
-
+    ArrayList<Team> TeamsArray = new ArrayList<Team>();
+    String myLogTag = "myLogTag";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +52,8 @@ public class CreateTeams extends ActionBarActivity {
         final ListView listView_Players = (ListView) this.findViewById(R.id.listView_Players);
         final TextView textView_NumberOfTeams = (TextView) this.findViewById(R.id.txtView_NumberOfTeams);
         final Spinner spn_NumberOfTeams = (Spinner) this.findViewById(R.id.spn_NumberOfTeams);
-        Button btn_MakeTeams = (Button) this.findViewById(R.id.btn_MakeTeams);
+        ImageButton btn_MakeTeams = (ImageButton) this.findViewById(R.id.btn_MakeTeams);
+
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, NameArray);
         listView_Players.setAdapter(adapter);
@@ -61,14 +67,50 @@ public class CreateTeams extends ActionBarActivity {
 
         btn_MakeTeams.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String NumberOfTeams = spn_NumberOfTeams.getSelectedItem().toString();
+            public void onClick(View v) {
+                int numberOfTeams = Integer.parseInt(spn_NumberOfTeams.getSelectedItem().toString());
+                double teamCapacity = (double) NameArray.size() / (double) numberOfTeams;
                 Random rand = new Random();
                 int n = rand.nextInt(NameArray.size());
+                ArrayList<String> NameList = new ArrayList<String>();
+                NameList = NameArray;
+                for(int i = 1; i <= numberOfTeams; i++)
+                {
+                    Team team = new Team(i);
+                    for(int j = 0; j < teamCapacity; j++)
+                    {
+                        if(team.getTeam().size() < teamCapacity)
+                            team.addMember(NameList.get(n));
+                        else
+                            break;
+                        NameList.remove(n);
+                        if(NameList.size() > 0)
+                            n = rand.nextInt(NameList.size());
+                    }
+                    TeamsArray.add(team);
+                }
+                try {
+                    Intent intent;
+                    if(numberOfTeams == 2)
+                        intent = new Intent(getApplicationContext(), TwoTeams.class);
+                    else if(numberOfTeams == 3)
+                        intent = new Intent(getApplicationContext(), ThreeTeams.class);
+                    else if(numberOfTeams == 4)
+                        intent = new Intent(getApplicationContext(), FourTeams.class);
+                    else if(numberOfTeams == 5)
+                        intent = new Intent(getApplicationContext(), FiveTeams.class);
+                    else if(numberOfTeams == 6)
+                        intent = new Intent(getApplicationContext(), ThreeTeams.class);
+                    else
+                        intent = null; //ain't gonna happen
 
+                    intent.putParcelableArrayListExtra("TeamsArray", TeamsArray);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.v("myLogTag", "Nu gick n�got fel");
+                }
             }
         });
-
     }
 
 
@@ -93,4 +135,11 @@ public class CreateTeams extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    /*public void TeamsScreen(View view)
+    {
+
+        Intent intent = new Intent(getApplicationContext(), TwoTeams.class);
+        intent.putParcelableArrayListExtra("TeamsArray", TeamsArray);
+        startActivity(intent);
+    }*/
 }

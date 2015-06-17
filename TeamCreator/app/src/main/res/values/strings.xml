@@ -6,4 +6,8 @@
     <string name="title_activity_add_players">AddPlayers</string>
     <string name="title_activity_create_teams">CreateTeams</string>
     <string name="title_activity_team">Team</string>
+    <string name="title_activity_two_teams">TwoTeams</string>
+    <string name="title_activity_three_teams">ThreeTeams</string>
+    <string name="title_activity_four_teams">FourTeams</string>
+    <string name="title_activity_five_teams">FiveTeams</string>
 </resources>

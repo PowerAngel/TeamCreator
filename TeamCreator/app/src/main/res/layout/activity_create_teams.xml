@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spn_NumberOfTeams"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="106dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -26,13 +26,18 @@
         android:layout_above="@+id/btn_MakeTeams"
         android:layout_below="@+id/spn_NumberOfTeams" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Slumpa Lag"
+        android:src="@drawable/button_randomize"
         android:id="@+id/btn_MakeTeams"
+        android:onClick="TeamsScreen"
+        android:background="#ff0000"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="false"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +45,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Number of Teams"
         android:id="@+id/txtView_NumberOfTeams"
-        android:layout_alignTop="@+id/spn_NumberOfTeams"
+        android:layout_alignLeft="@+id/spn_NumberOfTeams"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="italic" />

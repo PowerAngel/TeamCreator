@@ -28,6 +28,22 @@
             android:name=".Team"
             android:label="@string/title_activity_team" >
         </activity>
+        <activity
+            android:name=".TwoTeams"
+            android:label="@string/title_activity_two_teams" >
+        </activity>
+        <activity
+            android:name=".ThreeTeams"
+            android:label="@string/title_activity_three_teams" >
+        </activity>
+        <activity
+            android:name=".FourTeams"
+            android:label="@string/title_activity_four_teams" >
+        </activity>
+        <activity
+            android:name=".FiveTeams"
+            android:label="@string/title_activity_five_teams" >
+        </activity>
     </application>
 
 </manifest>

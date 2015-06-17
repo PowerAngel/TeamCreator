@@ -69,7 +69,7 @@ public class AddPlayers extends ActionBarActivity {
                 }
                 catch (Exception e)
                 {
-                    Log.v(myLogTag, "Nu gick något fel" + e);
+                    Log.v(myLogTag, "Nu gick nï¿½got fel" + e);
                 }
             }
 
@@ -99,11 +99,12 @@ public class AddPlayers extends ActionBarActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
                     intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
+                    Log.v(myLogTag, "Nu startas CreateTeams");
                     startActivity(intent);
                 }
                 catch(Exception e)
                 {
-                    Log.v(myLogTag, "Nu gick något fel");
+                    Log.v(myLogTag, "Nu gick nï¿½got fel" + e);
                 }
             }
         });
