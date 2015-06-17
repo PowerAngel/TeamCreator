@@ -2,6 +2,7 @@ package com.example.golvmopp.teamcreator;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +26,6 @@ public class CreateTeams extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_teams);
-
         PlayersArray = getIntent().getParcelableArrayListExtra("ChosenArray");
 
         /*Player player1 = new Player("Jonte",1);
