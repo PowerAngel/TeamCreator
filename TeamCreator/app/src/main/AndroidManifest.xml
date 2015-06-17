@@ -28,6 +28,10 @@
             android:name=".Team"
             android:label="@string/title_activity_team" >
         </activity>
+        <activity
+            android:name=".TwoTeams"
+            android:label="@string/title_activity_two_teams" >
+        </activity>
     </application>
 
 </manifest>

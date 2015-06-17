@@ -1,5 +1,6 @@
 package com.example.golvmopp.teamcreator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,6 +22,7 @@ public class CreateTeams extends ActionBarActivity {
     private ArrayAdapter<String> adapter;
     ArrayList<Player> PlayersArray = new ArrayList<Player>();
     ArrayList<String> NameArray = new ArrayList<String>();
+    ArrayList<Team> TeamsArray = new ArrayList<Team>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +57,25 @@ public class CreateTeams extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
         btn_MakeTeams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String NumberOfTeams = spn_NumberOfTeams.getSelectedItem().toString();
+                int numberOfTeams = Integer.parseInt(spn_NumberOfTeams.getSelectedItem().toString());
+                double teamCapacity = (double) NameArray.size() / (double) numberOfTeams;
                 Random rand = new Random();
                 int n = rand.nextInt(NameArray.size());
+                for(int i = 1; i <= numberOfTeams; i++)
+                {
+                    Team team = new Team(i);
+                    for(int j = 0; j < teamCapacity; j++)
+                    {
+                        if(team.getTeam().size() < teamCapacity)
+                            team.addMember(NameArray.get(n));
+                        else
+                            break;
+                    }
+                    TeamsArray.add(i-1, team);
+                }
 
             }
         });
@@ -88,5 +103,10 @@ public class CreateTeams extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void TeamsScreen(View view)   //OBS ÄNDRAD VILKEN KLASS SOM KÖRS!!!
+    {
+        Intent intent = new Intent(getApplicationContext(), TwoTeams.class);
+        startActivity(intent);
     }
 }
