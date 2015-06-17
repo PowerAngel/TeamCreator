@@ -114,7 +114,6 @@ public class AddPlayers extends ActionBarActivity {
                     {
                         ChosenArray.add(PlayersArray.get(position));
                     }
-
                 }
                 catch (Exception e)
                 {
