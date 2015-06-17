@@ -30,7 +30,6 @@ public class CreateTeams extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_teams);
-
         PlayersArray = getIntent().getParcelableArrayListExtra("ChosenArray");
 
         /*Player player1 = new Player("Jonte",1);
