@@ -36,7 +36,7 @@
         android:layout_alignTop="@+id/listView_Team2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="20dp" />
 </RelativeLayout>
