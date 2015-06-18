@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,7 +28,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class AddPlayers extends ActionBarActivity {
+public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryTextListener {
 
     private ArrayAdapter<String> adapter;
     ArrayList<Player> PlayersArray = new ArrayList<Player>();
@@ -34,6 +37,7 @@ public class AddPlayers extends ActionBarActivity {
     String myLogTag = "MyTag";
     private String FILE_NAME = "Players.txt";
     ListView listView_Players = null;
+    SearchView searchView_players;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,26 +48,23 @@ public class AddPlayers extends ActionBarActivity {
         buttonDone();
         buttonAdd();
         buttonRemove();
+        fixSearchView();
         fixListView();
+
         //searchView searchView_players;
     }
 
     public void buttonDone()
     {
         ImageButton imageButton_Done = (ImageButton) this.findViewById(R.id.imageButton_Done);
-        imageButton_Done.setOnClickListener(new View.OnClickListener()
-        {
+        imageButton_Done.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                try
-                {
+            public void onClick(View v) {
+                try {
                     Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
                     intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
                     startActivity(intent);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Log.v(myLogTag, "Nu gick n�got fel i intenten: " + e);
                 }
             }
@@ -95,7 +96,7 @@ public class AddPlayers extends ActionBarActivity {
                         Player player = new Player(editText_name.getText().toString(), 1);
                         PlayersArray.add(player);
                         NameArray.add(player.getName());
-                        listView_Players.setAdapter(adapter);
+                        ((BaseAdapter) listView_Players.getAdapter()).notifyDataSetChanged();
                         editText_name.setText("");
                     }
                     else
@@ -103,8 +104,6 @@ public class AddPlayers extends ActionBarActivity {
                         editText_name.setText("");
                         Log.v(myLogTag, "Namnet finns redan");
                     }
-
-
                 }
                 else
                 {
@@ -146,16 +145,31 @@ public class AddPlayers extends ActionBarActivity {
                 }
                 ChosenArray = new ArrayList<Player>();
                 ((BaseAdapter) listView_Players.getAdapter()).notifyDataSetChanged();
+                for(int i = 0; i < listView_Players.getCount(); i++)
+                {
+                    listView_Players.setItemChecked(i, false);
+                }
+
             }
         });
     }
 
+    public void fixSearchView()
+    {
+        searchView_players = (SearchView) this.findViewById(R.id.searchView_players);
+        searchView_players.setIconifiedByDefault(false);
+        searchView_players.setOnQueryTextListener(this);
+        searchView_players.setSubmitButtonEnabled(true);
+        searchView_players.setQueryHint("Search here");
+
+    }
     public void fixListView()
     {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, NameArray);
         listView_Players = (ListView) this.findViewById(R.id.listView_Players);
         listView_Players.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView_Players.setItemsCanFocus(false);
+        listView_Players.setTextFilterEnabled(true);
         listView_Players.setAdapter(adapter);
 
         listView_Players.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -277,5 +291,26 @@ public class AddPlayers extends ActionBarActivity {
         {
             Log.e(myLogTag, e.getMessage(), e);
         }
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query)
+    {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText)
+    {
+        if(TextUtils.isEmpty(newText))
+        {
+            listView_Players.clearTextFilter();
+        }
+        else
+        {
+            listView_Players.setFilterText(newText.toString());
+        }
+        return true;
     }
 }

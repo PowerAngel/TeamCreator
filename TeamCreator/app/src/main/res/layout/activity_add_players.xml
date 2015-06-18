@@ -69,6 +69,14 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <SearchView
+            android:id="@+id/searchView_players"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText_name"
+            android:layout_toRightOf="@+id/editText_name"
+            android:layout_toEndOf="@+id/editText_name" />
+
     </RelativeLayout>
 </RelativeLayout>
 
