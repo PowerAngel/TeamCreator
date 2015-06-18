@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Team implements Parcelable{
     private ArrayList<String> TeamList = new ArrayList<String>();
     private int teamNumber;
+    private int teamCapacity;
     public Team()
     {
 
@@ -21,6 +22,8 @@ public class Team implements Parcelable{
     public int getTeamNumber(){return teamNumber;}
     public ArrayList<String> getTeam(){return TeamList;}
     public void addMember(String name){TeamList.add(name);}
+    public int getTeamCapacity(){return teamCapacity;}
+    public void setTeamCapacity(int tc){teamCapacity = tc;}
 
     public int describeContents()
     {
