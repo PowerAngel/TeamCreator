@@ -76,26 +76,23 @@ public class CreateTeams extends ActionBarActivity {
                 for(int i = 1; i <= numberOfTeams; i++)
                 {
                     Team team = new Team(i);
-                    for(int j = 0; j < teamCapacity; j++)
-                    {
-
-                        if(team.getTeam().size() < teamCapacity)
-                        {
-                            if(NameList.size() > 0) {
-                                team.addMember(NameList.get(n));
-                                NameList.remove(n);
-                            }
-                        }
-                        else
-                            break;
-
-                        if(NameList.size() > 0) {
-                            n = rand.nextInt(NameList.size());
-                        }
-                    }
-
                     TeamsArray.add(team);
                 }
+                int ti = 0;
+                int nameList = NameList.size();
+                for(int i = 0; i < nameList; i++)
+                {
+                    TeamsArray.get(ti).addMember(NameList.get(n));
+                    NameList.remove(n);
+                    if(NameList.size() > 0)
+                        n = rand.nextInt(NameList.size());
+                    ti++;
+                    if(ti == numberOfTeams)
+                        ti = 0;
+
+                }
+
+
 
                 try {
                     Intent intent;

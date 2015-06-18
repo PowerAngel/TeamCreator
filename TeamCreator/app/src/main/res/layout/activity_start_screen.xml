@@ -21,9 +21,9 @@
         android:layout_alignRight="@+id/btn_Tournament"
         android:layout_alignEnd="@+id/btn_Tournament"
         android:background="#ff0000"/>
-        //android:layout_alignParentLeft="true"
+        <!--//android:layout_alignParentLeft="true"
         //android:layout_alignParentStart="true"
-    />
+    />-->
 
 
     <ImageButton
