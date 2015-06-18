@@ -55,7 +55,6 @@ public class CreateTeams extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 int numberOfTeams = Integer.parseInt(spn_NumberOfTeams.getSelectedItem().toString());
-                double teamCapacity = (double) NameArray.size() / (double) numberOfTeams;
                 Random rand = new Random();
                 int n = rand.nextInt(NameArray.size());
                 ArrayList<String> NameList = new ArrayList<String>();
