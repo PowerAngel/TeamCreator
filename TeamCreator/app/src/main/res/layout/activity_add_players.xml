@@ -55,7 +55,9 @@
             android:adjustViewBounds="true"
             android:src="@drawable/button_done"
             android:background="#ff0000"
-            android:layout_marginRight="200dp" />
+            android:layout_marginRight="200dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false" />
 
         <ImageButton
             android:id="@+id/imageButton_remove"
@@ -65,9 +67,9 @@
             android:src="@drawable/button_remove"
             android:background="#ff0000"
             android:adjustViewBounds="true"
-            android:layout_alignTop="@+id/imageButton_Done"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentBottom="false"
+            android:layout_marginTop="380dp"
+            android:layout_marginLeft="200dp" />
 
         <SearchView
             android:id="@+id/searchView_players"
