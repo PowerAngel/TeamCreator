@@ -32,18 +32,6 @@ public class CreateTeams extends ActionBarActivity {
         setContentView(R.layout.activity_create_teams);
         PlayersArray = getIntent().getParcelableArrayListExtra("ChosenArray");
 
-        /*Player player1 = new Player("Jonte",1);
-        Player player2 = new Player("David",1);
-        Player player3 = new Player("Bjorn",1337);
-        Player player4 = new Player("John",1);
-        Player player5 = new Player("Josef",1);
-        Player player6 = new Player("Plinge",1);
-        PlayersArray.add(player1);
-        PlayersArray.add(player2);
-        PlayersArray.add(player3);
-        PlayersArray.add(player4);
-        PlayersArray.add(player5);
-        PlayersArray.add(player6);*/
         for(int i = 0; i < PlayersArray.size(); i++){
             String name = PlayersArray.get(i).getName();
             NameArray.add(i,name);
@@ -91,8 +79,6 @@ public class CreateTeams extends ActionBarActivity {
                         ti = 0;
 
                 }
-
-
 
                 try {
                     Intent intent;
