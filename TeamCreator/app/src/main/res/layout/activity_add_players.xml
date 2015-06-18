@@ -36,35 +36,38 @@
             android:hint="Name"/>
 
         <ImageButton
+            android:id="@+id/imageButton_AddName"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
             android:layout_alignParentRight="true"
-            android:id="@+id/imageButton_AddName"
-            android:src="@drawable/button_add"
             android:scaleType="fitCenter"
             android:adjustViewBounds="false"
+            android:src="@drawable/button_add"
             android:background="#ff0000" />
 
         <ImageButton
-            android:layout_width="500dp"
-            android:layout_height="150dp"
             android:id="@+id/imageButton_Done"
-            android:layout_marginTop="380dp"
-            android:background="#ff0000"
-            android:scaleType="fitStart"
-            android:adjustViewBounds="true"
-            android:src="@drawable/button_done"/>
-
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton_remove"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/editText_name"
-            android:layout_toEndOf="@+id/editText_name"
+            android:layout_marginTop="380dp"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:src="@drawable/button_done"
             android:background="#ff0000"
-            android:src="@drawable/button_remove"/>
+            android:layout_marginRight="200dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart"
+            android:src="@drawable/button_remove"
+            android:background="#ff0000"
+            android:adjustViewBounds="true"
+            android:layout_alignTop="@+id/imageButton_Done"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -42,6 +43,7 @@ public class AddPlayers extends ActionBarActivity {
         importArrayList();
         buttonDone();
         buttonAdd();
+        buttonRemove();
         fixListView();
         //searchView searchView_players;
     }
@@ -62,11 +64,7 @@ public class AddPlayers extends ActionBarActivity {
                 }
                 catch (Exception e)
                 {
-
-                    Log.v(myLogTag, "Nu gick n�got fel" + e);
-
                     Log.v(myLogTag, "Nu gick n�got fel i intenten: " + e);
-
                 }
             }
         });
@@ -74,19 +72,43 @@ public class AddPlayers extends ActionBarActivity {
 
     public void buttonAdd()
     {
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, NameArray);
         final EditText editText_name = (EditText) this.findViewById(R.id.editText_name);
         ImageButton imageButton_add = (ImageButton) this.findViewById(R.id.imageButton_AddName);
         imageButton_add.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                if (editText_name != null) {
-                    Player player = new Player(editText_name.getText().toString(), 1);
-                    PlayersArray.add(player);
-                    NameArray.add(player.getName());
-                    listView_Players.setAdapter(adapter);
-                    editText_name.setText("");
+                if (editText_name.getText().length() != 0)
+                {
+                    int check = 0;
+
+                    for(int i = 0; i < PlayersArray.size(); i++)
+                    {
+                        if(PlayersArray.get(i).getName().equals(editText_name.getText().toString()))
+                        {
+                            check = 1;
+                        }
+                    }
+
+                    if(check == 0)
+                    {
+                        Player player = new Player(editText_name.getText().toString(), 1);
+                        PlayersArray.add(player);
+                        NameArray.add(player.getName());
+                        listView_Players.setAdapter(adapter);
+                        editText_name.setText("");
+                    }
+                    else
+                    {
+                        editText_name.setText("");
+                        Log.v(myLogTag, "Namnet finns redan");
+                    }
+
+
+                }
+                else
+                {
+                    Log.v(myLogTag, "Inget namn ifyllt");
                 }
             }
         });
@@ -94,11 +116,43 @@ public class AddPlayers extends ActionBarActivity {
 
     public void buttonRemove()
     {
-        
+        ImageButton imageButton_remove = (ImageButton) this.findViewById(R.id.imageButton_remove);
+        imageButton_remove.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                for (int i = 0; i < ChosenArray.size(); i++)
+                {
+                    for (int k = 0; k < PlayersArray.size(); k++)
+                    {
+                        if(ChosenArray.get(i).getName().equals(PlayersArray.get(k).getName()))
+                        {
+                            PlayersArray.remove(k);
+                            int removeName = -1;
+                            for (int j = 0; j < NameArray.size(); j++)
+                            {
+                                if(NameArray.get(j).toString().equals(ChosenArray.get(i).getName()))
+                                {
+                                    removeName = j;
+                                }
+                            }
+                            if(removeName != -1)
+                            {
+                                NameArray.remove(removeName);
+                            }
+                        }
+                    }
+                }
+                ChosenArray = new ArrayList<Player>();
+                ((BaseAdapter) listView_Players.getAdapter()).notifyDataSetChanged();
+            }
+        });
     }
 
     public void fixListView()
     {
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, NameArray);
         listView_Players = (ListView) this.findViewById(R.id.listView_Players);
         listView_Players.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView_Players.setItemsCanFocus(false);
@@ -110,12 +164,6 @@ public class AddPlayers extends ActionBarActivity {
             {
                 try
                 {
-
-                    Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
-                    intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
-                    Log.v(myLogTag, "Nu startas CreateTeams");
-                    startActivity(intent);
-
                     int check = 0;
                     for (int i = 0; i < ChosenArray.size(); i++)
                     {
@@ -182,14 +230,18 @@ public class AddPlayers extends ActionBarActivity {
             while(scanner.hasNext())
             {
                 String text = scanner.nextLine();
-                tokens = text.split(",");
+                if(text != null)
+                {
+                    tokens = text.split(",");
+                    Log.v(myLogTag, "text: " + text);
+                    Log.v(myLogTag,"tokens[0]: " + tokens[0] + " tokens[1]: " + tokens[1]);
 
-                Player player = new Player(tokens[0], Double.parseDouble(tokens[1]));
-                PlayersArray.add(player);
-                NameArray.add(player.getName());
-                Log.v(myLogTag, "player.getname: " + player.getName() + " || player.getskill: " + player.getSkill());
+                    Player player = new Player(tokens[0], Double.parseDouble(tokens[1]));
+                    PlayersArray.add(player);
+                    NameArray.add(player.getName());
+                    Log.v(myLogTag, "player.getname: " + player.getName() + " || player.getskill: " + player.getSkill());
+                }
             }
-            //listView_Players.setAdapter(adapter);
             scanner.close();
         }
         catch(FileNotFoundException e)
