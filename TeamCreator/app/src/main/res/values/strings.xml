@@ -11,4 +11,6 @@
     <string name="title_activity_four_teams">FourTeams</string>
     <string name="title_activity_five_teams">FiveTeams</string>
     <string name="title_activity_eight_teams">EightTeams</string>
+    <string name="title_activity_six_teams">SixTeams</string>
+    <string name="title_activity_seven_teams">SevenTeams</string>
 </resources>

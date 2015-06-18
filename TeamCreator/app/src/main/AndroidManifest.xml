@@ -48,6 +48,14 @@
             android:name=".EightTeams"
             android:label="@string/title_activity_eight_teams" >
         </activity>
+        <activity
+            android:name=".SixTeams"
+            android:label="@string/title_activity_six_teams" >
+        </activity>
+        <activity
+            android:name=".SevenTeams"
+            android:label="@string/title_activity_seven_teams" >
+        </activity>
     </application>
 
 </manifest>

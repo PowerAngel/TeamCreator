@@ -41,7 +41,6 @@ public class CreateTeams extends ActionBarActivity {
         final Spinner spn_NumberOfTeams = (Spinner) this.findViewById(R.id.spn_NumberOfTeams);
         ImageButton btn_MakeTeams = (ImageButton) this.findViewById(R.id.btn_MakeTeams);
 
-
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, NameArray);
         listView_Players.setAdapter(adapter);
 
@@ -91,7 +90,7 @@ public class CreateTeams extends ActionBarActivity {
                     else if(numberOfTeams == 5)
                         intent = new Intent(getApplicationContext(), FiveTeams.class);
                     else if(numberOfTeams == 6)
-                        intent = new Intent(getApplicationContext(), ThreeTeams.class);
+                        intent = new Intent(getApplicationContext(), SixTeams.class);
                     else
                         intent = null; //ain't gonna happen
 
