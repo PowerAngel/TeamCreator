@@ -17,8 +17,9 @@
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="165dp"
+        android:background="#FF3232"
         android:id="@+id/listView_Players"/>
 
     <RelativeLayout
@@ -26,8 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp">
         <EditText
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="225dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:inputType="textPersonName"
             android:ems="10"
@@ -38,7 +39,7 @@
         <ImageButton
             android:id="@+id/imageButton_AddName"
             android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
             android:layout_alignParentRight="true"
             android:scaleType="fitCenter"
@@ -73,11 +74,13 @@
 
         <SearchView
             android:id="@+id/searchView_players"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editText_name"
-            android:layout_toRightOf="@+id/editText_name"
-            android:layout_toEndOf="@+id/editText_name" />
+            android:layout_width="225dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/editText_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </RelativeLayout>

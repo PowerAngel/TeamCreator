@@ -50,8 +50,6 @@ public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryT
         buttonRemove();
         fixSearchView();
         fixListView();
-
-        //searchView searchView_players;
     }
 
     public void buttonDone()
