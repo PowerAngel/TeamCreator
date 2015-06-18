@@ -55,9 +55,9 @@
             android:adjustViewBounds="true"
             android:src="@drawable/button_done"
             android:background="#ff0000"
-            android:layout_marginRight="200dp"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentEnd="false" />
+            android:layout_marginRight="200dp"/>
+            <!-- android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false" /> -->
 
         <ImageButton
             android:id="@+id/imageButton_remove"
