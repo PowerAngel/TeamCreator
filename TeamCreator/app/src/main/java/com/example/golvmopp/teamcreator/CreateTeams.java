@@ -57,7 +57,7 @@ public class CreateTeams extends ActionBarActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, NameArray);
         listView_Players.setAdapter(adapter);
 
-        String[] items = new String[] {"2", "3", "4", "5", "6"};
+        String[] items = new String[] {"2", "3", "4", "5", "6", "7", "8"};
         Spinner spinner = (Spinner) this.findViewById(R.id.spn_NumberOfTeams);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, items);
@@ -78,16 +78,25 @@ public class CreateTeams extends ActionBarActivity {
                     Team team = new Team(i);
                     for(int j = 0; j < teamCapacity; j++)
                     {
+
                         if(team.getTeam().size() < teamCapacity)
-                            team.addMember(NameList.get(n));
+                        {
+                            if(NameList.size() > 0) {
+                                team.addMember(NameList.get(n));
+                                NameList.remove(n);
+                            }
+                        }
                         else
                             break;
-                        NameList.remove(n);
-                        if(NameList.size() > 0)
+
+                        if(NameList.size() > 0) {
                             n = rand.nextInt(NameList.size());
+                        }
                     }
+
                     TeamsArray.add(team);
                 }
+
                 try {
                     Intent intent;
                     if(numberOfTeams == 2)

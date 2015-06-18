@@ -14,7 +14,7 @@
         android:id="@+id/listView_Team1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="147dp"
-        android:layout_marginBottom="265dp"
+        android:layout_marginBottom="255dp"
         android:layout_marginRight="40dp"
         android:fastScrollEnabled="true"
         android:textFilterEnabled="false"/>
@@ -29,6 +29,6 @@
         android:layout_marginTop="340dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="70dp" />
+        android:layout_marginBottom="60dp" />
 
 </RelativeLayout>

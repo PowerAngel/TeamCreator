@@ -106,11 +106,6 @@ public class AddPlayers extends ActionBarActivity {
                 try
                 {
 
-                    Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
-                    intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
-                    Log.v(myLogTag, "Nu startas CreateTeams");
-                    startActivity(intent);
-
                     int check = 0;
                     for (int i = 0; i < ChosenArray.size(); i++)
                     {
