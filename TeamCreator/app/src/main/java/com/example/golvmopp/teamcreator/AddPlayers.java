@@ -1,6 +1,8 @@
 package com.example.golvmopp.teamcreator;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -72,6 +74,20 @@ public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryT
                     {
                         Log.v(myLogTag, "Nu gick n�got fel i intenten: " + e);
                     }
+                }
+                else
+                {
+                    new AlertDialog.Builder(AddPlayers.this)
+                            .setTitle("No player selected")
+                            .setMessage("You have to select at least one player to continue")
+                            .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which)
+                                {
+
+                                }
+                            }).show();
                 }
             }
         });
