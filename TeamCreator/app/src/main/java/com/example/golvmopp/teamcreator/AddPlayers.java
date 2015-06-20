@@ -55,15 +55,23 @@ public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryT
     public void buttonDone()
     {
         ImageButton imageButton_Done = (ImageButton) this.findViewById(R.id.imageButton_Done);
-        imageButton_Done.setOnClickListener(new View.OnClickListener() {
+        imageButton_Done.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
-                    intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Log.v(myLogTag, "Nu gick n�got fel i intenten: " + e);
+            public void onClick(View v)
+            {
+                if(ChosenArray.size() > 0)
+                {
+                    try
+                    {
+                        Intent intent = new Intent(getApplicationContext(), CreateTeams.class);
+                        intent.putParcelableArrayListExtra("ChosenArray", ChosenArray);
+                        startActivity(intent);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.v(myLogTag, "Nu gick n�got fel i intenten: " + e);
+                    }
                 }
             }
         });
@@ -169,6 +177,11 @@ public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryT
         listView_Players.setItemsCanFocus(false);
         listView_Players.setTextFilterEnabled(true);
         listView_Players.setAdapter(adapter);
+
+        for(int i = 0; i < listView_Players.getCount(); i++)
+        {
+            listView_Players.setItemChecked(i, false);
+        }
 
         listView_Players.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
