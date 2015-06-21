@@ -271,7 +271,8 @@ public class AddPlayers extends ActionBarActivity implements SearchView.OnQueryT
             while(scanner.hasNext())
             {
                 String text = scanner.nextLine();
-                if(text != null)
+                Log.v(myLogTag, "text.Length(): " + text.length());
+                if(text != null && !text.isEmpty() && text.length() != 1 && text != "null")
                 {
                     tokens = text.split(",");
                     Log.v(myLogTag, "text: " + text);
